@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { CreateArticleDto } from './dto/create-article.dto';
-import { UpdateArticleDto } from './dto/update-article.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { Prisma } from '@prisma/client';
+import { UpdateArticleDto } from './dto/update-article.dto';
 
 @Injectable()
 export class ArticlesService {
   constructor(private prisma: PrismaService) {}
-  create(createArticleDto: CreateArticleDto) {
+  create(createArticleDto: Prisma.ArticleCreateInput) {
     return this.prisma.article.create({ data: createArticleDto });
   }
 
